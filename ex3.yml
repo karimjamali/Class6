@@ -1,0 +1,14 @@
+---
+- name: Create Arista VLANs
+  hosts: arista
+
+  tasks:
+
+   - name: Set Ethernet7 to trunk mode, VLAN1
+     eos_switchport: name=Ethernet7 mode=trunk trunk_allowed_vlans=1,100,200,300 trunk_native_vlan=1
+        username={{eapi_username}}
+        password={{eapi_password}}
+        host={{eapi_hostname}}
+        port={{eapi_port}}
+        transport=https
+
